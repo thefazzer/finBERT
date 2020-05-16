@@ -201,7 +201,14 @@ class FinBert(object):
             weights = list()
             labels = self.label_list
     
-            class_weights = [train.shape[0] / train[train.label == label].shape[0] for label in labels]
+            # creates a matrix [ 0.1, 0.3, 0.4 ] etc. of positive, neutral, negative etc,
+            # class_weights = [train.shape[0] / train[train.label == label].shape[0] for label in labels]
+            
+            class_weights = []
+            for label in labels:
+                filter = train["label"]==label
+                class_weights.append(train.shape[0] / sum(filter))
+                
             self.class_weights = torch.tensor(class_weights)
 
         return examples

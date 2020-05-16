@@ -1,6 +1,3 @@
-
-data/
-
 # Distribution / packaging
 ~*.*
 screenlog*.*
@@ -34,4 +31,3 @@ venv.bak/
 .mypy_cache/
 #pycharm
 workspace.xml
-models/
